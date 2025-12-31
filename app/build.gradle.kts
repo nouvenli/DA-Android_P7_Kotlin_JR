@@ -46,7 +46,7 @@ android {
 
 dependencies {
 
-// Hilt
+    // Hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.fragment)
 
@@ -77,5 +77,12 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 }
+// Exportation schéma en Json dans dossier schemas
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")  // dossier enregistrement bdd
+    arg("room.generateKotlin", "true") // compile en kotlin pour KMP
+}
+
 
 
