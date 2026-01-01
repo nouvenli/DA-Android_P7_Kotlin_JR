@@ -2,4 +2,9 @@ package com.openclassrooms.arista.domain.model
 
 import java.time.LocalDateTime
 
-data class Sleep(@JvmField var startTime: LocalDateTime, var duration: Int, var quality: Int)
+
+data class Sleep(
+    val startTime: LocalDateTime,// @JvmField retiré
+    val duration: Int,
+    val quality: Int
+)

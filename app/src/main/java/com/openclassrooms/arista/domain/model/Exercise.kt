@@ -4,8 +4,8 @@ import java.time.LocalDateTime
 
 data class Exercise(
     val id: Long? = null,
-    var startTime: LocalDateTime,
-    var duration: Int,
-    var category: ExerciseCategory,
-    var intensity: Int
+    val startTime: LocalDateTime,
+    val duration: Int,
+    val category: ExerciseCategory, //enum
+    val intensity: Int
 )
