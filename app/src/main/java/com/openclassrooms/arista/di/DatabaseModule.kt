@@ -67,8 +67,8 @@ class DatabaseModule {
 suspend fun populateDatabase(userDao: UserDao, exerciseDao: ExerciseDao, sleepDao: SleepDao) {
         userDao.insertUser(
             UserDto(
-                name="johndoe",
-                email="johndoe@example.com"
+                name="AnneOnyme",
+                email="AnneOnyme@example.com"
             ))
 
         exerciseDao.insertExercise(
