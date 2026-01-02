@@ -1,20 +1,35 @@
 package com.openclassrooms.arista.data.repository
 
-import com.openclassrooms.arista.data.FakeApiService
+import com.openclassrooms.arista.data.database.dao.ExerciseDao
+import com.openclassrooms.arista.data.mapper.toDomain
+import com.openclassrooms.arista.data.mapper.toDto
 import com.openclassrooms.arista.domain.model.Exercise
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ExerciseRepository(private val apiService: FakeApiService = FakeApiService()) {
+// getall, addnew, delete
 
-    // Get all exercises
-    val allExercises: List<Exercise> get() = apiService.getAllExercises()
-
-    // Add a new exercise
-    fun addExercise(exercise: Exercise) {
-        apiService.addExercise(exercise)
+@Singleton
+class ExerciseRepository @Inject constructor(
+    private val exerciseDao: ExerciseDao
+){
+    // recupérer les données de exercise (dto en exercice du domaine)
+    fun getAllExercises(): Flow<List<Exercise>> {
+        return exerciseDao.getAllExercises().map { listDto ->
+            listDto.map { it.toDomain() } // Utilisation du mapper
+        }
     }
 
-    // Delete an exercise
-    fun deleteExercise(exercise: Exercise) {
-        apiService.deleteExercise(exercise)
+    // ajouter un nouvel exercise (transforme le Exercise du domaine en DTO)
+    suspend fun addExercise(exercise: Exercise) {
+        exerciseDao.insertExercise(exercise.toDto())
     }
+
+    // supprimer un exercise
+    suspend fun deleteExercise(exercise: Exercise) {
+        exerciseDao.deleteExercise(exercise.toDto())
+    }
+
 }
