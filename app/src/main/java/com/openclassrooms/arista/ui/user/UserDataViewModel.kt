@@ -8,6 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -26,7 +27,11 @@ class UserDataViewModel @Inject constructor(private val getAllUsersUseCase: GetA
         //collect au sein d'une coroutine
         viewModelScope.launch {
             // abonnement au flux du usecase avec collect
-            getAllUsersUseCase.execute().collect { userList ->
+            getAllUsersUseCase.execute()
+                .catch { exception ->
+                    exception.printStackTrace()
+                }
+                .collect { userList ->
                 _userFlow.value = userList.firstOrNull()
             }
         }

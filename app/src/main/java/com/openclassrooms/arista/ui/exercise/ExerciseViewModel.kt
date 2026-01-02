@@ -10,6 +10,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -29,7 +30,11 @@ class ExerciseViewModel @Inject constructor(
 
     private fun loadAllExercises() {
         viewModelScope.launch {
-            getAllExercisesUseCase.execute().collect { exercises ->
+            getAllExercisesUseCase.execute()
+                .catch { exception ->
+                    exception.printStackTrace()
+                }
+                .collect { exercises ->
                 _exercisesFlow.value = exercises
             }
         }
@@ -37,13 +42,22 @@ class ExerciseViewModel @Inject constructor(
 
     fun deleteExercise(exercise: Exercise) {
         viewModelScope.launch {
-            deleteExerciseUseCase.execute(exercise)
+            try {
+                deleteExerciseUseCase.execute(exercise)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
         }
     }
 
     fun addNewExercise(exercise: Exercise) {
         viewModelScope.launch {
-            addExerciseUseCase.execute(exercise)
+            try {
+                addExerciseUseCase.execute(exercise)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }
