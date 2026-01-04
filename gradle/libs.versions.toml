@@ -10,6 +10,10 @@ activityKtx = "1.8.0"
 fragmentKtx = "1.6.1"
 desugar = "2.0.4"
 ksp = "1.9.22-1.0.17"
+# Mockito
+mockito ="5.10.0"
+mockitoKotlin="5.2.1"
+coroutinesTest="1.7.3"
 
 # Hilt
 hilt = "2.48"
@@ -62,6 +66,9 @@ androidx-lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+mockito-core = {group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-kotlin={group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+kotlinx-coroutines-test = {group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref="coroutinesTest"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
