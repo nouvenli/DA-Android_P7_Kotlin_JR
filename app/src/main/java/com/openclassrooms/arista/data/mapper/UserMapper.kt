@@ -3,10 +3,7 @@ import com.openclassrooms.arista.data.database.entities.UserDto
 
 import com.openclassrooms.arista.domain.model.User
 
-/**
- * Dto to Domain
- */
-
+// Dto to Domain
 fun UserDto.toDomain(): User {
     return User(
         name = this.name,

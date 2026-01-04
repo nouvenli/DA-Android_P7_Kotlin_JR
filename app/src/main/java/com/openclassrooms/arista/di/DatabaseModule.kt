@@ -35,7 +35,7 @@ class DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context,
-        provider: Provider<AppDatabase> // permet de récupérer la base de données plus tard
+        provider: Provider<AppDatabase>
     ): AppDatabase {
         return Room.databaseBuilder(
             context,

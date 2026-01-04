@@ -23,5 +23,4 @@ fun Sleep.toDto(): SleepDto {
         duration = this.duration,
         quality = this.quality
     )
-
 }

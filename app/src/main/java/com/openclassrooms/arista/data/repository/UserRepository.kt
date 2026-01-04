@@ -7,6 +7,7 @@ import com.openclassrooms.arista.data.database.entities.UserDto
 import com.openclassrooms.arista.data.mapper.toDomain
 import com.openclassrooms.arista.data.mapper.toDto
 import com.openclassrooms.arista.domain.model.User
+import com.openclassrooms.arista.domain.repository.UserRepositoryInterface
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
@@ -19,22 +20,22 @@ import javax.inject.Singleton
 @Singleton
 class UserRepository @Inject constructor(
     private val userDao: UserDao
-) {
+) : UserRepositoryInterface {
 
     // Récupérer tous les utilisateurs (transforme les DTOs en Users du domaine)
-    fun getAllUsers(): Flow<List<User>> {
+    override fun getAllUsers(): Flow<List<User>> {
         return userDao.getAllUsers().map { listDto ->
             listDto.map { it.toDomain() } // Utilisation du mapper
         }
     }
 
     // Insérer un utilisateur (transforme le User du domaine en DTO)
-    suspend fun addUser(user: User) {
+    override suspend fun addUser(user: User) {
         userDao.insertUser(user.toDto())
     }
 
     // Supprimer un utilisateur
-    suspend fun deleteUser(user: User) {
+    override suspend fun deleteUser(user: User) {
         userDao.deleteUser(user.toDto())
     }
 }
