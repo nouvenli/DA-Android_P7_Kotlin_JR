@@ -57,7 +57,7 @@ class AddExerciseUseCaseTest {
 
 
     @Test
-    fun `When execute() is called with invalid data fields the repository's add exercise method should be called`() =
+    fun `execute() is called with invalid data fields the repository's add exercise method should be called`() =
         runBlocking {
         val invalidExercise = Exercise(
             startTime = LocalDateTime.now(),

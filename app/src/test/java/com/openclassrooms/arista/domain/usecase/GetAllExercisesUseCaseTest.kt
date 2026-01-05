@@ -57,7 +57,7 @@ class GetAllExercisesUseCaseTest {
     }
 
     @Test
-    fun `when execute() should  be return an empty list when no exercise exist`() = runBlocking {
+    fun `execute() should  be return an empty list when no exercise exist`() = runBlocking {
 
         val emptyExerciseList = emptyList<Exercise>()
 

@@ -47,7 +47,7 @@ class GetAllSleepsUseCaseTest {
     }
 
     @Test
-    fun `when execute() should return an empty list when no sleep exist`() =runBlocking {
+    fun `execute() should return an empty list when no sleep exist`() =runBlocking {
         val emptySleepList = emptyList<Sleep>()
 
         Mockito.`when`(sleepRepository.getAllSleeps()).thenReturn(flowOf(emptySleepList))
