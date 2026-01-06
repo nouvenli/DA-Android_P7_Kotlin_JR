@@ -19,12 +19,12 @@ class GetAllUsersUseCaseTest {
 
     @Mock
     private lateinit var userRepository: UserRepository
-    private lateinit var getAllUsersUseCase: GetAllUsersUseCase
+    private lateinit var getAllUsersUseCase: GetUserUseCase
 
     @Before
     fun setup() {
         MockitoAnnotations.openMocks(this)
-        getAllUsersUseCase = GetAllUsersUseCase(userRepository)
+        getAllUsersUseCase = GetUserUseCase(userRepository)
     }
 
     // Ajoutez les tests

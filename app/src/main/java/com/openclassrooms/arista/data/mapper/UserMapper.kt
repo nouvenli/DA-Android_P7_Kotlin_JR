@@ -6,6 +6,7 @@ import com.openclassrooms.arista.domain.model.User
 // Dto to Domain
 fun UserDto.toDomain(): User {
     return User(
+        id=this.idUser,
         name = this.name,
         email = this.email
     )
@@ -14,7 +15,7 @@ fun UserDto.toDomain(): User {
 // Domaine to le Dto
 fun User.toDto(): UserDto {
     return UserDto(
-        idUser = 0,
+        idUser = this.id,
         name = this.name,
         email = this.email
     )

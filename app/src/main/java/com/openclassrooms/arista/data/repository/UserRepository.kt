@@ -22,10 +22,10 @@ class UserRepository @Inject constructor(
     private val userDao: UserDao
 ) : UserRepositoryInterface {
 
-    // Récupérer tous les utilisateurs (transforme les DTOs en Users du domaine)
-    override fun getAllUsers(): Flow<List<User>> {
+    override fun getUsers(): Flow<User?> {
         return userDao.getAllUsers().map { listDto ->
-            listDto.map { it.toDomain() } // Utilisation du mapper
+            // On prend le premier, ou null si vide
+            listDto.firstOrNull()?.toDomain()
         }
     }
 
@@ -33,6 +33,7 @@ class UserRepository @Inject constructor(
     override suspend fun addUser(user: User) {
         userDao.insertUser(user.toDto())
     }
+
 
     // Supprimer un utilisateur
     override suspend fun deleteUser(user: User) {
