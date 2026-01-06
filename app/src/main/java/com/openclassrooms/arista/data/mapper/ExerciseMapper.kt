@@ -19,7 +19,7 @@ fun ExerciseDto.toDomain() : Exercise {
 // Domaine to Dto
 fun Exercise.toDto(): ExerciseDto {
     return ExerciseDto(
-        id = 0,
+        id = this.id ?:0, // if id is null, use 0 for a new creation
         startTime = this.startTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli(),
         duration = this.duration,
         category = this.category,

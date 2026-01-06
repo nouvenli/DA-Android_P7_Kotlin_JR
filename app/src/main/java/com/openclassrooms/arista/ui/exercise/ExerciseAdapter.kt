@@ -31,7 +31,8 @@ class ExerciseAdapter(private val context: DeleteExerciseInterface) :
         holder.tvDuration.text = String.format("Duration: %d minutes", exercise.duration)
         holder.tvCategory.text = String.format("Category: %s", exercise.category.toString())
         holder.tvIntensity.text = String.format("Intensity: %d", exercise.intensity)
-        holder.ivDelete.setOnClickListener { _: View? -> context.deleteExercise(exercise) }
+        holder.ivDelete.setOnClickListener {_: View? ->
+            context.deleteExercise(exercise) }
     }
 
     inner class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -46,7 +47,7 @@ class ExerciseAdapter(private val context: DeleteExerciseInterface) :
             tvDuration = itemView.findViewById(R.id.tv_duration)
             tvCategory = itemView.findViewById(R.id.tv_category)
             tvIntensity = itemView.findViewById(R.id.tv_intensity)
-            ivDelete = itemView.findViewById(R.id.delete)
+            ivDelete = itemView.findViewById(R.id.iv_delete)
         }
     }
 
@@ -54,7 +55,7 @@ class ExerciseAdapter(private val context: DeleteExerciseInterface) :
         private val DIFF_CALLBACK: DiffUtil.ItemCallback<Exercise> =
             object : DiffUtil.ItemCallback<Exercise>() {
                 override fun areItemsTheSame(oldItem: Exercise, newItem: Exercise): Boolean {
-                    return oldItem === newItem
+                    return oldItem == newItem
                 }
 
                 override fun areContentsTheSame(oldItem: Exercise, newItem: Exercise): Boolean {

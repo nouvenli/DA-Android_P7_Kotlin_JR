@@ -1,5 +1,4 @@
 package com.openclassrooms.arista.data.mapper
-
 import com.openclassrooms.arista.data.database.entities.SleepDto
 import com.openclassrooms.arista.domain.model.Sleep
 import java.time.Instant

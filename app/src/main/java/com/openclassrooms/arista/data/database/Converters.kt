@@ -3,6 +3,12 @@ package com.openclassrooms.arista.data.database
 import androidx.room.TypeConverter
 import com.openclassrooms.arista.domain.model.ExerciseCategory
 
+/**
+ * Type converters to allow Room to reference complex data types.
+ *
+ * This class provides methods to convert custom types [ExerciseCategory] to and from
+ * types that Room can persist (like [String]).
+ */
 class Converters {
 
     // enum to String pour la BDD

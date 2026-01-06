@@ -8,6 +8,13 @@ import com.openclassrooms.arista.data.database.entities.UserDto
 import kotlinx.coroutines.flow.Flow
 
 
+/**
+ * Data Access Object (DAO) interface for the [UserDto] entity.
+ *
+ * This interface defines the database methods to perform Create, Read, Update, and Delete (CRUD)
+ * operations on the user table. It uses Room annotations to define SQL queries
+ * and database interactions.
+*/
 @Dao
 interface UserDao {
     @Upsert

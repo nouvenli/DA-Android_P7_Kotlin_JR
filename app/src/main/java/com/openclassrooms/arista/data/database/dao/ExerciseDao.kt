@@ -8,6 +8,13 @@ import com.openclassrooms.arista.data.database.entities.ExerciseDto
 import kotlinx.coroutines.flow.Flow
 
 
+/**
+ * Data Access Object (DAO) for managing [ExerciseDto] entity.
+ *
+ * This interface provides methods to perform Create, Read, Update, and Delete (CRUD) operations
+ * on the "sleep" table. It uses Room annotations to define SQL queries and operations.
+ *
+ */
 @Dao
 interface ExerciseDao {
     @Upsert

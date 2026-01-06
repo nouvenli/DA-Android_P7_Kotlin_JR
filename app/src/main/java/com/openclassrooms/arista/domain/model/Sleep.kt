@@ -4,7 +4,7 @@ import java.time.LocalDateTime
 
 
 data class Sleep(
-    val startTime: LocalDateTime,// @JvmField retiré
+    val startTime: LocalDateTime,
     val duration: Int,
     val quality: Int
 )

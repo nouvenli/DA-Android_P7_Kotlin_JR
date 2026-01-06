@@ -13,6 +13,15 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
+/**
+ * ViewModel responsible for managing and providing user data to the UI.
+ *
+ * This class interacts with the domain layer through [GetAllUsersUseCase] to fetch user information.
+ * It exposes the user state as a [StateFlow] which emits the first user found in the repository,
+ * or null if no user is available.
+ *
+ * @property getAllUsersUseCase The use case used to retrieve the list of users.
+ */
 @HiltViewModel
 class UserDataViewModel @Inject constructor(private val getAllUsersUseCase: GetAllUsersUseCase) :
     ViewModel() {
@@ -23,6 +32,14 @@ class UserDataViewModel @Inject constructor(private val getAllUsersUseCase: GetA
         loadUserData()
     }
 
+    /**
+     * Initiates the retrieval of user data from the domain layer.
+     *
+     * This function launches a coroutine within the [viewModelScope] to collect the flow
+     * of users provided by [GetAllUsersUseCase]. Upon receiving the list of users, it updates
+     * the [_userFlow] state with the first user found in the list, or null if the list is empty.
+     * Any exceptions occurring during the collection are caught and logged to the stack trace.
+     */
     private fun loadUserData() {
         //collect au sein d'une coroutine
         viewModelScope.launch {
