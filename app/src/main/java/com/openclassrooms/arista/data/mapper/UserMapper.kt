@@ -1,20 +1,21 @@
 package com.openclassrooms.arista.data.mapper
-import com.openclassrooms.arista.data.database.entities.UserDto
+
+import com.openclassrooms.arista.data.database.entities.UserEntity
 
 import com.openclassrooms.arista.domain.model.User
 
-// Dto to Domain
-fun UserDto.toDomain(): User {
+// Entity to Domain
+fun UserEntity.toDomain(): User {
     return User(
-        id=this.idUser,
+        id = this.idUser,
         name = this.name,
         email = this.email
     )
 }
 
-// Domaine to le Dto
-fun User.toDto(): UserDto {
-    return UserDto(
+// Domain to entity
+fun User.toEntity(): UserEntity {
+    return UserEntity(
         idUser = this.id,
         name = this.name,
         email = this.email

@@ -1,8 +1,6 @@
 package com.openclassrooms.arista.domain.usecase
 
 import com.openclassrooms.arista.data.repository.UserRepository
-import com.openclassrooms.arista.domain.model.Exercise
-import com.openclassrooms.arista.domain.model.ExerciseCategory
 import com.openclassrooms.arista.domain.model.User
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -12,7 +10,7 @@ import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
-import java.time.LocalDateTime
+
 
 
 @RunWith(JUnit4::class)

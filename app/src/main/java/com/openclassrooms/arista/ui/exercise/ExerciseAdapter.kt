@@ -31,8 +31,9 @@ class ExerciseAdapter(private val context: DeleteExerciseInterface) :
         holder.tvDuration.text = String.format("Duration: %d minutes", exercise.duration)
         holder.tvCategory.text = String.format("Category: %s", exercise.category.toString())
         holder.tvIntensity.text = String.format("Intensity: %d", exercise.intensity)
-        holder.ivDelete.setOnClickListener {_: View? ->
-            context.deleteExercise(exercise) }
+        holder.ivDelete.setOnClickListener { _: View? ->
+            context.deleteExercise(exercise)
+        }
     }
 
     inner class ExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

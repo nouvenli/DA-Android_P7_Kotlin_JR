@@ -4,12 +4,12 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
-import com.openclassrooms.arista.data.database.entities.SleepDto
+import com.openclassrooms.arista.data.database.entities.SleepEntity
 import kotlinx.coroutines.flow.Flow
 
 
 /**
- * Data Access Object (DAO) for managing [SleepDto] entities in the database.
+ * Data Access Object (DAO) for managing [SleepEntity] entities in the database.
  *
  * This interface provides methods to perform Create, Read, Update, and Delete (CRUD)
  * operations on the "sleep" table. It uses Room annotations to define SQL queries
@@ -18,12 +18,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface SleepDao {
     @Upsert
-    suspend fun insertSleep(sleep: SleepDto): Long
+    suspend fun insertSleep(sleep: SleepEntity): Long
 
     @Query("SELECT * FROM sleep")
-    fun getAllSleeps(): Flow<List<SleepDto>>
+    fun getAllSleeps(): Flow<List<SleepEntity>>
 
     @Delete
-    suspend fun deleteSleep(sleep: SleepDto)
+    suspend fun deleteSleep(sleep: SleepEntity)
 
 }
