@@ -62,9 +62,9 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
-
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    // ksp compilateur pour Room et Hilt
+
+    // ksp compilateur for Room et Hilt
     ksp(libs.androidx.room.compiler)
     ksp(libs.hilt.compiler)
 
@@ -80,11 +80,11 @@ dependencies {
 
 
 }
-// Exportation schéma en Json dans dossier schemas
+// Exportation schéma Json in directory schemas
 
 ksp {
-    arg("room.schemaLocation", "$projectDir/schemas")  // dossier enregistrement bdd
-    arg("room.generateKotlin", "true") // compile en kotlin pour KMP
+    arg("room.schemaLocation", "$projectDir/schemas")
+    arg("room.generateKotlin", "true") // compile in kotlin for KMP
 }
 
 

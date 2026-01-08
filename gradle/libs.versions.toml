@@ -24,7 +24,7 @@ junit = "4.13.2"
 junitExt = "1.1.5"
 espresso = "3.5.1"
 
-# Room & Serialization A VERIFIER
+# Room & Serialization
 room = "2.6.1"
 serializationJson = "1.6.0"
 lifecycle = "2.6.2"
@@ -51,8 +51,6 @@ androidx-hilt-navigation-fragment = { group = "androidx.hilt", name = "hilt-navi
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
-# Room pour schéma location
-
 
 # Serialization
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serializationJson" }
