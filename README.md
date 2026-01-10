@@ -11,6 +11,12 @@ l'objectif est de mettre en place une base de données locales en utilisant Room
 - Profil utilisateur : informations personnelles comme le nom, l'email, le mot de passe.
 
 ## Réalisations pour ce projet
+Gradle : 
+- mise en place du catalogue de versions
+- ajout des bibliothèques Room
+- Modification des gradles application et projet
+- transfert de kapt à ksp
+
 Data :
  - ajout des entités, des data access, des mappers, du converters et de la base.
  - modifications des repositories
