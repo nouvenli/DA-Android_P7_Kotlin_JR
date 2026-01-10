@@ -7,8 +7,10 @@ import com.openclassrooms.arista.domain.usecase.AddExerciseUseCase
 import com.openclassrooms.arista.domain.usecase.DeleteExerciseUseCase
 import com.openclassrooms.arista.domain.usecase.GetAllExercisesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
@@ -45,7 +47,10 @@ class ExerciseViewModel @Inject constructor(
             SharingStarted.WhileSubscribed(5000),
             emptyList()
         )
+    // error Flow for add and delete
 
+    private val _errorFlow = MutableStateFlow<String?>(null)
+    val errorFlow: StateFlow<String?> = _errorFlow.asStateFlow()
 
     fun deleteExercise(exercise: Exercise) {
         viewModelScope.launch {
@@ -53,6 +58,8 @@ class ExerciseViewModel @Inject constructor(
                 deleteExerciseUseCase.execute(exercise)
             } catch (e: Exception) {
                 e.printStackTrace()
+                _errorFlow.value = "Error deleting exercise"
+
             }
         }
     }
@@ -63,6 +70,7 @@ class ExerciseViewModel @Inject constructor(
                 addExerciseUseCase.execute(exercise)
             } catch (e: Exception) {
                 e.printStackTrace()
+                _errorFlow.value = "Error adding exercise"
             }
         }
     }

@@ -48,6 +48,7 @@ class ExerciseFragment : Fragment(), DeleteExerciseInterface {
         setupRecyclerView()
         setupFab()
         observeExercises()
+        observeErrors()
     }
 
     private fun setupRecyclerView() {
@@ -60,6 +61,16 @@ class ExerciseFragment : Fragment(), DeleteExerciseInterface {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.exercisesFlow.collect { exercises ->
                 exerciseAdapter.submitList(exercises)
+            }
+        }
+    }
+
+    private fun observeErrors() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.errorFlow.collect { errorMessage ->
+                if (errorMessage != null) {
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

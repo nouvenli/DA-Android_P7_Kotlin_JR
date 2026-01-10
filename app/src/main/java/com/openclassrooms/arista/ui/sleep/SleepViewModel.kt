@@ -30,7 +30,6 @@ class SleepViewModel @Inject constructor(
     getAllSleepsUseCase: GetAllSleepsUseCase
 ) : ViewModel() {
 
-    // Transformation directe du flux
     val sleeps: StateFlow<List<Sleep>> = getAllSleepsUseCase.execute()
         .catch { exception ->
             exception.printStackTrace()

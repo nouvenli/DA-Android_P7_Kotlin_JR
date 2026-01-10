@@ -6,7 +6,6 @@ import androidx.room.ColumnInfo
 import com.openclassrooms.arista.domain.model.ExerciseCategory
 
 
-
 /**
  * Represents an exercise entry in the application's local database.
  *
@@ -23,18 +22,18 @@ import com.openclassrooms.arista.domain.model.ExerciseCategory
 @Entity(tableName = "exercise")
 data class ExerciseEntity(
     @PrimaryKey(autoGenerate = true)
-@ColumnInfo(name = "id")
-val id: Long = 0,
+    @ColumnInfo(name = "id")
+    val id: Long = 0,
 
     @ColumnInfo(name = "start_time")
-val startTime: Long,
+    val startTime: Long,
 
     @ColumnInfo(name = "duration")
-val duration: Int,
+    val duration: Int,
 
     @ColumnInfo(name = "category")
-val category: ExerciseCategory, //enum
+    val category: ExerciseCategory, //enum
 
     @ColumnInfo(name = "intensity")
-val intensity: Int
+    val intensity: Int
 )
